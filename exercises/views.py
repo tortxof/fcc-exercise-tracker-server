@@ -15,3 +15,6 @@ class ExerciseSessionViewSet(viewsets.ModelViewSet):
     queryset = ExerciseSession.objects.all()
     serializer_class = ExerciseSessionSerializer
     permission_classes = (ExerciseSessionPermission,)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
