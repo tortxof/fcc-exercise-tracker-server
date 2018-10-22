@@ -7,8 +7,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ('url', 'username', 'exercise_sessions')
+        read_only_fields = ('exercise_sessions',)
 
 class ExerciseSessionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ExerciseSession
         fields = ('url', 'description', 'duration', 'date', 'user')
+        read_only_fields = ('user',)
