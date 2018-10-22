@@ -10,6 +10,12 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         read_only_fields = ('exercise_sessions',)
 
 class ExerciseSessionSerializer(serializers.HyperlinkedModelSerializer):
+    user = serializers.HyperlinkedRelatedField(
+        default=serializers.CurrentUserDefault(),
+        read_only=True,
+        view_name='user-detail'
+    )
+
     class Meta:
         model = ExerciseSession
         fields = ('url', 'description', 'duration', 'date', 'user')
