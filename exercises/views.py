@@ -4,20 +4,14 @@ from rest_framework import generics, viewsets, permissions
 
 from .models import ExerciseSession
 from .serializers import UserSerializer, ExerciseSessionSerializer
-from .permissions import IsOwnerOrReadOnly, IsSelfOrReadOnly
+from .permissions import UserPermission, ExerciseSessionPermission
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-    permission_classes = (
-        permissions.IsAuthenticatedOrReadOnly,
-        IsSelfOrReadOnly,
-    )
+    permission_classes = (UserPermission,)
 
 class ExerciseSessionViewSet(viewsets.ModelViewSet):
     queryset = ExerciseSession.objects.all()
     serializer_class = ExerciseSessionSerializer
-    permission_classes = (
-        permissions.IsAuthenticatedOrReadOnly,
-        IsOwnerOrReadOnly,
-    )
+    permission_classes = (ExerciseSessionPermission,)
