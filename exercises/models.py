@@ -12,6 +12,8 @@ class ExerciseSession(models.Model):
         on_delete=models.CASCADE,
         related_name='exercise_sessions',
     )
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.description
