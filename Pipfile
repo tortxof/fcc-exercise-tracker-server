@@ -8,6 +8,7 @@ django = "*"
 djangorestframework = "*"
 zappa = "*"
 markdown = "*"
+djoser = "*"
 
 [dev-packages]
 

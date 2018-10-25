@@ -16,18 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from rest_framework.authtoken.views import obtain_auth_token
+from djoser.views import UserViewSet
 
-from exercises import views
+from exercises.views import ExerciseSessionViewSet
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'exercise_sessions', views.ExerciseSessionViewSet)
+router.register(r'users', UserViewSet)
+router.register(r'exercise_sessions', ExerciseSessionViewSet)
 
 
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api-token-auth/', obtain_auth_token),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
 ]

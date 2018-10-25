@@ -1,15 +1,8 @@
-from django.contrib.auth.models import User
-from django.shortcuts import render
-from rest_framework import generics, viewsets, permissions
+from rest_framework import viewsets
 
 from .models import ExerciseSession
-from .serializers import UserSerializer, ExerciseSessionSerializer
-from .permissions import UserPermission, ExerciseSessionPermission
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-    permission_classes = (UserPermission,)
+from .serializers import ExerciseSessionSerializer
+from .permissions import ExerciseSessionPermission
 
 class ExerciseSessionViewSet(viewsets.ModelViewSet):
     queryset = ExerciseSession.objects.all()
