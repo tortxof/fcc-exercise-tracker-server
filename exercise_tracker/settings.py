@@ -147,3 +147,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+if os.getenv('AWS_STORAGE_BUCKET_NAME'):
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_BUCKET_ACL = None
+    AWS_DEFAULT_ACL = 'public-read'
+    AWS_AUTO_CREATE_BUCKET = True
+    AWS_IS_GZIPPED = True
+    AWS_QUERYSTRING_AUTH = False
+    STATICFILES_STORAGE = 'exercise_tracker.storage.StaticStorage'
