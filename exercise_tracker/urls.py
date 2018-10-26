@@ -16,19 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from djoser.views import UserViewSet
 
-from exercises.views import ExerciseSessionViewSet
+from exercises.views import UserViewSet, ExerciseSessionViewSet
 
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-router.register(r'exercise_sessions', ExerciseSessionViewSet)
+router.register('users', UserViewSet, basename='exercise-user')
+router.register('exercise_sessions', ExerciseSessionViewSet)
 
 
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.authtoken')),
+    path('', include('djoser.urls.authtoken')),
 ]
