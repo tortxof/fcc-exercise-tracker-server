@@ -11,6 +11,8 @@ markdown = "*"
 djoser = "*"
 "psycopg2-binary" = "*"
 django-storages = "*"
+coreapi = "*"
+pygments = "*"
 
 [dev-packages]
 
