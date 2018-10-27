@@ -6,6 +6,11 @@
 <a class='navbar-brand' rel="nofollow" href="{% url 'api-root' %}">
     Exercise Tracker API
 </a>
+<ul class="nav navbar-nav">
+    <li>
+        <a href="{% url 'api-docs:docs-index' %}">Docs</a>
+    </li>
+</ul>
 {% endblock %}
 
 {% block content %}
