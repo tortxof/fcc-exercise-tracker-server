@@ -32,7 +32,7 @@ ALLOWED_HOSTS = [
     host for host
     in os.getenv('DJANGO_ALLOWED_HOSTS', default='').split(',')
     if host
-]
+] + (['.amazonaws.com'] if DEBUG else [])
 
 
 # Application definition
